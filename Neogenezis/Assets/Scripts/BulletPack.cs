@@ -8,7 +8,6 @@ public class BulletPack : MonoBehaviour
     {
         if (other.attachedRigidbody.GetComponent<PlayerHealth>())
         {
-            //other.attachedRigidbody.GetComponent<BulletCreator>().GetBulletPack();
             FindObjectOfType<BulletCreator>().GetBulletPack();
             Destroy(gameObject);
         }

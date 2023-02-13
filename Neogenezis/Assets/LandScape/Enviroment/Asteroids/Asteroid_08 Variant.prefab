@@ -69,7 +69,7 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: 2eb678104ea2688459767d2cdf387353, type: 2}
     - target: {fileID: 7897508458846092021, guid: c5333863daf7f6b4ca391205f29dda4e, type: 3}
       propertyPath: m_Name
-      value: Asteroid_08
+      value: Asteroid_08 Variant
       objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: c5333863daf7f6b4ca391205f29dda4e, type: 3}
@@ -78,6 +78,22 @@ GameObject:
   m_CorrespondingSourceObject: {fileID: 7897508458846092021, guid: c5333863daf7f6b4ca391205f29dda4e, type: 3}
   m_PrefabInstance: {fileID: 291523854846702354}
   m_PrefabAsset: {fileID: 0}
+--- !u!54 &2126554596
+Rigidbody:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7607183950114015719}
+  serializedVersion: 2
+  m_Mass: 4
+  m_Drag: 4
+  m_AngularDrag: 4
+  m_UseGravity: 0
+  m_IsKinematic: 0
+  m_Interpolate: 1
+  m_Constraints: 120
+  m_CollisionDetection: 0
 --- !u!136 &2126554592
 CapsuleCollider:
   m_ObjectHideFlags: 0
@@ -92,19 +108,3 @@ CapsuleCollider:
   m_Height: 0.012208658
   m_Direction: 1
   m_Center: {x: -0.000059825285, y: -0.0002726677, z: -0.0002449946}
---- !u!54 &2126554596
-Rigidbody:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7607183950114015719}
-  serializedVersion: 2
-  m_Mass: 5
-  m_Drag: 4
-  m_AngularDrag: 4
-  m_UseGravity: 0
-  m_IsKinematic: 0
-  m_Interpolate: 1
-  m_Constraints: 120
-  m_CollisionDetection: 0

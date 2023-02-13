@@ -4,9 +4,9 @@ using UnityEngine;
 
 public class PlusAnimation : MonoBehaviour
 {
-    public float SpeedRotation;
+    [SerializeField]private float SpeedRotation;
     
-    void Update()
+    private void Update()
     {
         transform.Rotate(SpeedRotation * Time.deltaTime,0,0);
     }

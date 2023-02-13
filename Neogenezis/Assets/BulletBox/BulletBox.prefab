@@ -26,7 +26,7 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 2051944672606017887}
-  m_LocalRotation: {x: -0.7071068, y: 0, z: -0, w: 0.7071068}
+  m_LocalRotation: {x: -0.7071068, y: 0, z: 0, w: 0.7071068}
   m_LocalPosition: {x: 17.456, y: 4.055, z: 0}
   m_LocalScale: {x: 0.74367, y: 0.74367, z: 0.74367}
   m_ConstrainProportionsScale: 0
@@ -34,7 +34,7 @@ Transform:
   - {fileID: 7052847462128783611}
   m_Father: {fileID: 0}
   m_RootOrder: 0
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_LocalEulerAnglesHint: {x: -90, y: 0, z: 0}
 --- !u!135 &959164942187413919
 SphereCollider:
   m_ObjectHideFlags: 0
@@ -84,7 +84,6 @@ GameObject:
   - component: {fileID: 7052847462128783611}
   - component: {fileID: 7033417335390573047}
   - component: {fileID: 7043415379964549725}
-  - component: {fileID: 7056730064781634060}
   m_Layer: 0
   m_Name: Barrel_TriPlatesS (13)
   m_TagString: Untagged
@@ -157,16 +156,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!114 &7056730064781634060
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 7056304000460124555}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f2f3a40d454a32c4a99f9f65b89d66b5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  SpeedOfRotation: 75

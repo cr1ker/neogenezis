@@ -4,8 +4,7 @@ using UnityEngine;
 
 public class HealPack : MonoBehaviour
 {
-    
-    void OnTriggerEnter(Collider other)
+    private void OnTriggerEnter(Collider other)
     {
         if (other.attachedRigidbody.GetComponent<PlayerHealth>())
         {

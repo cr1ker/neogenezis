@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
 
-public class EnemyHealth : MonoBehaviour
+public class EnemyHealth : MonoBehaviour, IGunDamage
 {
     public int Health;
     public UnityEvent GetDamage;
@@ -12,7 +12,7 @@ public class EnemyHealth : MonoBehaviour
     {
         if (other.gameObject.GetComponent<Bullet>())
         {
-            Health -= 1;
+            Health -= GunDamage();
             GetDamage.Invoke();
             if (Health <= 0)
             {
@@ -20,12 +20,17 @@ public class EnemyHealth : MonoBehaviour
             }
         }
     }
-    
+
+    public int GunDamage()
+    {
+        return FindObjectOfType<Gun>().GetGunDamage();
+    }
+
     private void OnTriggerEnter(Collider other)
     {
         if (other.attachedRigidbody.GetComponent<Bullet>())
         {
-            Health -= 1;
+            Health -= GunDamage();
             GetDamage.Invoke();
             if (Health <= 0)
             {

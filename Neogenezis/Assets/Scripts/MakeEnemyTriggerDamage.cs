@@ -2,13 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class MakeEnemyTriggerDamage : MonoBehaviour
+public class MakeEnemyTriggerDamage : EnemyHealth
 {
     private void OnTriggerEnter(Collider other)
     {
         if (other.attachedRigidbody.GetComponent<Bullet>())
         {
-            gameObject.GetComponent<EnemyHealth>().Health -= 1;
+            Health -= 1;
         }
     }
 }

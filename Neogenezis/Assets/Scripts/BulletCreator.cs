@@ -13,6 +13,7 @@ public class BulletCreator : MonoBehaviour
 
     public AudioSource Shot;
     public AudioSource NotShot; //active while _currentbullets == 0
+    public AudioSource BulletPick;
 
     private int _currentBullets; //reference to Gun
     private int _quantityOfBullets;
@@ -24,7 +25,7 @@ public class BulletCreator : MonoBehaviour
 
     private void Update()
     {
-        _currentBullets = FindObjectOfType<ModernPistol>().GetCurrentBullets();
+        _currentBullets = FindObjectOfType<Gun>().GetCurrentBullets();
         if (_currentBullets > 0)
         {
             if (Input.GetMouseButtonDown(0))
@@ -51,7 +52,9 @@ public class BulletCreator : MonoBehaviour
     public void GetBulletPack()
     {
         _quantityOfBullets += 50; //bullet pack
-        FindObjectOfType<ModernPistol>().GetNewReserveBullets(ref _quantityOfBullets);
+        FindObjectOfType<Gun>().GetNewReserveBullets(ref _quantityOfBullets);
+        BulletPick.pitch = Random.Range(1f, 1.25f);
+        BulletPick.Play();
     }
 
     public int GetTotalNumberOfBullets()
