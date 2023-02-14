@@ -5,14 +5,14 @@ using UnityEngine;
 public class MiniRobot : MonoBehaviour
 {
     private Transform _playerTransform;
-    public Animator RobotAnimation;
+    [SerializeField] private Animator RobotAnimation;
     
-    void Start()
+    private void Start()
     {
         _playerTransform = FindObjectOfType<PlayerHealth>().transform;
     }
 
-    void Update()
+    private void Update()
     {
         float distance = Vector3.Distance(_playerTransform.position,gameObject.transform.position);
         if (distance < 10)

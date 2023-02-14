@@ -2,24 +2,33 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Ufo : MonoBehaviour
+public class UFO : MonoBehaviour, IUFOContoller
 {
-    public Animator RayAnimator;
-    
+    [SerializeField]private Animator RayAnimator;
+    [SerializeField] private MeshRenderer _player;
+
     private void Start()
+    {
+        SpawnAction();
+    }
+
+    public void SpawnAction()
+    {
+        SetAnimationBool(true);
+        StartCoroutine(SetPlayerActive());
+        SetAnimationBool(false);
+    }
+
+    public void FinishAction()
     {
         
     }
 
-    private void Update()
+    private IEnumerator SetPlayerActive()
     {
-        if (Input.GetKey(KeyCode.B))
-        {
-            RayAnimator.SetBool("RayActive",true);
-        }
-        else
-        {
-            RayAnimator.SetBool("RayActive", false);
-        }
+        yield return new WaitForSeconds(3);
+        _player.enabled = true;
     }
+
+    private void SetAnimationBool(bool isActive) => RayAnimator.SetBool("RayActive", isActive);
 }

@@ -4,11 +4,12 @@ using UnityEngine;
 
 public class HealPack : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
-        if (other.attachedRigidbody.GetComponent<PlayerHealth>())
+        PlayerHealth player = other.attachedRigidbody.GetComponent<PlayerHealth>();
+        if (player)
         {
-            other.attachedRigidbody.GetComponent<PlayerHealth>().GetHealthPack();
+            player.GetHealthPack();
             Destroy(gameObject);
         }
     }

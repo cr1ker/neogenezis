@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class MiniRobotBulletCreator : MonoBehaviour
 {
-    public GameObject BulletPrefab;
-    public List<Transform> SpawnsBullet;
+    [SerializeField] private GameObject BulletPrefab;
+    [SerializeField] private List<Transform> SpawnsBullet;
     private float _bulletSpeed;
     
     private Transform _playerTransform;

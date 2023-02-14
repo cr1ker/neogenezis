@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class HPAnimation : MonoBehaviour
 {
-    public Animator HealthBarAnimation;
+    [SerializeField] private Animator HealthBarAnimation;
     private float _time;
 
-    void Update()
+    private void LateUpdate()
     {
         _time += Time.deltaTime;
         if (_time >= 10)

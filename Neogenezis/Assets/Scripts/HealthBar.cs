@@ -5,19 +5,15 @@ using UnityEngine.UI;
 
 public class HealthBar : MonoBehaviour
 {  
-    public RawImage[] healthPoints;
-    public PlayerHealth Health;
+    [SerializeField] private RawImage[] healthPoints;
+    [SerializeField] private PlayerHealth Health;
 
     private void Start()
     {
         Health.Health = Health.MaxHealth; 
     }
-
-    private void Update()
-    {
-        HealthFiller();
-    }
-    private void HealthFiller()
+    
+    public void HealthFiller()
     {
         for (int i = 0; i < Health.MaxHealth; i++)
         {

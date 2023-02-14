@@ -17,15 +17,17 @@ public class BulletCreator : MonoBehaviour
 
     private int _currentBullets; //reference to Gun
     private int _quantityOfBullets;
+    private Gun _currentGun;
 
     private void Awake()
     {
         _quantityOfBullets = 50;
+        _currentGun = FindObjectOfType<Gun>();
     }
 
     private void Update()
     {
-        _currentBullets = FindObjectOfType<Gun>().GetCurrentBullets();
+        _currentBullets = _currentGun.GetCurrentBullets();
         if (_currentBullets > 0)
         {
             if (Input.GetMouseButtonDown(0))

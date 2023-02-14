@@ -11,20 +11,20 @@ public enum Direction
 
 public class PointMover : MonoBehaviour
 {
-    public Transform RightPoint;
-    public Transform LeftPoint;
+    [SerializeField]private Transform RightPoint;
+    [SerializeField]private Transform LeftPoint;
 
-    public Direction CurrentDirection;
+    private Direction CurrentDirection;
     
-    public float Speed;
-    public float RotationSpeed;
+    [SerializeField]private float Speed;
+    [SerializeField]private float RotationSpeed;
     
     private RotateToEuler _rotateToEuler;
 
     private bool _isStopped;
     
-    public UnityEvent EventOnRightTarget;
-    public UnityEvent EventOnLeftTarget;
+    [SerializeField]private UnityEvent _eventOnRightTarget;
+    [SerializeField]private UnityEvent _eventOnLeftTarget;
     
     private void Start()
     {
@@ -47,7 +47,7 @@ public class PointMover : MonoBehaviour
             {
                 _isStopped = true;
                 CurrentDirection = Direction.Right;
-                EventOnRightTarget.Invoke();
+                _eventOnRightTarget.Invoke();
                 Invoke(nameof(ContinueMove),RotationSpeed);
             }
         }
@@ -58,7 +58,7 @@ public class PointMover : MonoBehaviour
             {
                 _isStopped = true;
                 CurrentDirection = Direction.Left;
-                EventOnLeftTarget.Invoke();
+                _eventOnLeftTarget.Invoke();
                 Invoke(nameof(ContinueMove),RotationSpeed);
             }
         }

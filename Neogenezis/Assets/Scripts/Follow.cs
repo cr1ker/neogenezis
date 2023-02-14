@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class Follow : MonoBehaviour
 {
-    public Transform Target;
-    public float Speed;
+    [SerializeField] private Transform Target;
+    [SerializeField] private float Speed;
     
-    void Update()
+    private void Update()
     {
         transform.position = Vector3.Lerp(transform.position, Target.position, Time.deltaTime * Speed);
     }

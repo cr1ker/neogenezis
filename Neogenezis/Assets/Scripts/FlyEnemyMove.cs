@@ -4,15 +4,15 @@ using UnityEngine;
 
 public class FlyEnemyMove : MonoBehaviour
 {
-    public Rigidbody Enemy;
-    public Transform _playerTransform;
-    public float Speed;
-    public float TimeToReachPlayer;
+    [SerializeField] private Rigidbody _enemy;
+    [SerializeField] private Transform _playerTransform;
+    [SerializeField] private float _speed;
+    [SerializeField] private float _timeToReachPlayer;
 
-    void Update()
+    private void FixedUpdate()
     {
         Vector3 toPlayer = (_playerTransform.position - transform.position).normalized;
-        Vector3 force = Enemy.mass * (toPlayer * Speed - Enemy.velocity) / TimeToReachPlayer;
-        Enemy.AddForce(force); 
+        Vector3 force = _enemy.mass * (toPlayer * _speed - _enemy.velocity) / _timeToReachPlayer;
+        _enemy.AddForce(force); 
     }
 }

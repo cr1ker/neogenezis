@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class GunMove : MonoBehaviour
 {
-    public Transform CrosshairPosition;
+    [SerializeField] private Transform CrosshairPosition;
     
 
-    void Update()
+    private void Update()
     {
         Vector3 relativePositon = CrosshairPosition.position - transform.position;
         Quaternion rotation = Quaternion.LookRotation(relativePositon);

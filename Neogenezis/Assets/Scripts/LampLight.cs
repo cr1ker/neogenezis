@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class LampLight : MonoBehaviour
 {
-    public Light LightOfLamp;
+    [SerializeField] private Light LightOfLamp;
     private float _time;
 
     private void Update()

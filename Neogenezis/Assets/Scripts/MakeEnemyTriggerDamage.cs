@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class MakeEnemyTriggerDamage : EnemyHealth
 {
-    private void OnTriggerEnter(Collider other)
+    public void OnTriggerEnter(Collider other)
     {
         if (other.attachedRigidbody.GetComponent<Bullet>())
         {

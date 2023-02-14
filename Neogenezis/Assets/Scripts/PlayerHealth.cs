@@ -6,19 +6,19 @@ using UnityEngine.SceneManagement;
 
 public class PlayerHealth : MonoBehaviour, IAliveObject
 {
-    public int Health;
-    public int MaxHealth;
+    [SerializeField] public int Health;
+    [SerializeField] public int MaxHealth;
     
-    public AudioSource HealSound;
-    public AudioSource DamageSound;
+    [SerializeField] private AudioSource HealSound;
+    [SerializeField] private AudioSource DamageSound;
 
-    [SerializeField] private int _respawnScene;
-    
-    public UnityEvent EventOnTakeDamage;
-    
+    [SerializeField] private UnityEvent EventOnTakeDamage;
+    [SerializeField] private UnityEvent _eventOnTakeDamageUI;
+
     public void OnHit(int damage)
     {
         Health -= damage;
+        _eventOnTakeDamageUI.Invoke();
         IsAlive(Health);
         
         DamageSound.pitch = Random.Range(1f, 1.2f);
@@ -31,14 +31,14 @@ public class PlayerHealth : MonoBehaviour, IAliveObject
     {
         if (health <= 0)
         {
-            SceneManager.LoadScene(_respawnScene);
+            SceneManager.LoadScene(SceneManager.GetActiveScene().name);
             return;
         }
     }
 
     public void GetHealthPack()
     {
-        Health += 1;
+        Health += 2;
         HealSound.pitch = Random.Range(0.6f, 0.7f);
         HealSound.Play();
         if (Health >= MaxHealth)
