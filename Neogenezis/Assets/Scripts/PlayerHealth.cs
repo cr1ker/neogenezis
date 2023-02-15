@@ -39,6 +39,7 @@ public class PlayerHealth : MonoBehaviour, IAliveObject
     public void GetHealthPack()
     {
         Health += 2;
+        _eventOnTakeDamageUI.Invoke();
         HealSound.pitch = Random.Range(0.6f, 0.7f);
         HealSound.Play();
         if (Health >= MaxHealth)

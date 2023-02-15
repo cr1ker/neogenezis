@@ -3,17 +3,17 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 
-public class BulletCreator : MonoBehaviour
+public class BulletCreator : MonoBehaviour, ISetShotAudio
 {
-    public GameObject BulletPrefab;
-    public Transform SpawnBullet;
-    public float BulletSpeed;
+    [SerializeField] private GameObject BulletPrefab;
+    [SerializeField] private Transform SpawnBullet;
+    [SerializeField] private float BulletSpeed;
 
-    public GameObject LightAim; //light after shot
+    [SerializeField] private GameObject LightAim; //light after shot
 
-    public AudioSource Shot;
-    public AudioSource NotShot; //active while _currentbullets == 0
-    public AudioSource BulletPick;
+    [SerializeField] private AudioSource Shot;
+    [SerializeField] private AudioSource NotShot; //active while _currentbullets == 0
+    [SerializeField] private AudioSource BulletPick;
 
     private int _currentBullets; //reference to Gun
     private int _quantityOfBullets;
@@ -39,8 +39,7 @@ public class BulletCreator : MonoBehaviour
                 LightAim.SetActive(true);
                 Invoke(nameof(SetOffLight),0.07f);
                 //Shot Audio
-                Shot.pitch = Random.Range(0.60f, 0.70f);
-                Shot.Play();
+                SetShotAudio(Shot);
             }
         }
         else if (Input.GetMouseButtonDown(0))
@@ -50,6 +49,12 @@ public class BulletCreator : MonoBehaviour
     }
 
     private void SetOffLight() => LightAim.SetActive(false);
+
+    public void SetShotAudio(AudioSource shotAudio)
+    {
+        shotAudio.pitch = Random.Range(0.60f, 0.70f);
+        shotAudio.Play();
+    }
 
     public void GetBulletPack()
     {
