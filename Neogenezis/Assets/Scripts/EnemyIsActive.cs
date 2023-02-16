@@ -10,6 +10,17 @@ public class EnemyIsActive : MonoBehaviour
 
     private void LateUpdate()
     {
+        StartCoroutine(IsEnemyClose());
+    }
+
+    private IEnumerator IsEnemyClose()
+    {
+        yield return new WaitForSeconds(1.5f);
+        CheckEnemyDistance();
+    }
+
+    private void CheckEnemyDistance()
+    {
         foreach (var enemy in _enemies)
         {
             if (enemy != null)

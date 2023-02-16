@@ -167,24 +167,6 @@ PrefabInstance:
       objectReference: {fileID: 2100000, guid: a9a31141dfb39fe478ed1e1976b3051f, type: 2}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: 136656b18d688a24faaa83bd893df0ee, type: 3}
---- !u!1 &4581901950348197904 stripped
-GameObject:
-  m_CorrespondingSourceObject: {fileID: 919132149155446097, guid: 136656b18d688a24faaa83bd893df0ee, type: 3}
-  m_PrefabInstance: {fileID: 3699502986941283649}
-  m_PrefabAsset: {fileID: 0}
---- !u!114 &1409341235
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4581901950348197904}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e6b40d13f78eb7846a3a652117e22b89, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  LightOfLamp: {fileID: 447593734}
 --- !u!4 &8056620131472778014 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: -2550837224051335585, guid: 136656b18d688a24faaa83bd893df0ee, type: 3}

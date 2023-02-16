@@ -5,8 +5,8 @@ using UnityEngine.Events;
 
 public enum Direction
 {
-    Right,
-    Left
+    Right = 0,
+    Left = 1
 }
 
 public class PointMover : MonoBehaviour
@@ -45,24 +45,27 @@ public class PointMover : MonoBehaviour
             transform.position -= new Vector3(Time.deltaTime * Speed, 0f, 0f);
             if (transform.position.x < LeftPoint.position.x)
             {
-                _isStopped = true;
                 CurrentDirection = Direction.Right;
-                _eventOnRightTarget.Invoke();
-                Invoke(nameof(ContinueMove),RotationSpeed);
+                RotateToDirection(_eventOnRightTarget);
             }
         }
         else
         {
-            gameObject.transform.position += new Vector3(Time.deltaTime * Speed, 0f, 0f);
+            transform.position += new Vector3(Time.deltaTime * Speed, 0f, 0f);
             if (transform.position.x > RightPoint.position.x)
             {
-                _isStopped = true;
                 CurrentDirection = Direction.Left;
-                _eventOnLeftTarget.Invoke();
-                Invoke(nameof(ContinueMove),RotationSpeed);
+                RotateToDirection(_eventOnLeftTarget);
             }
         }
     }
 
+    private void RotateToDirection(UnityEvent eventOnTarget)
+    {
+        _isStopped = true;
+        eventOnTarget.Invoke();
+        Invoke(nameof(ContinueMove),RotationSpeed);
+    }
+    
     private void ContinueMove() => _isStopped = false;
 }
