@@ -9,6 +9,6 @@ public class Follow : MonoBehaviour
     
     private void Update()
     {
-        transform.position = Vector3.Lerp(transform.position, Target.position, Time.deltaTime * Speed);
+        transform.localPosition = Vector3.Lerp(transform.localPosition, Target.position, Time.deltaTime * Speed);
     }
 }

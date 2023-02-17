@@ -14,6 +14,8 @@ public class BulletCreator : MonoBehaviour, ISetShotAudio
     [SerializeField] private AudioSource Shot;
     [SerializeField] private AudioSource NotShot; //active while _currentbullets == 0
     [SerializeField] private AudioSource BulletPick;
+    [SerializeField] private Joystick _joystick;
+    private float _time;
 
     private int _currentBullets; //reference to Gun
     private int _quantityOfBullets;
@@ -28,26 +30,43 @@ public class BulletCreator : MonoBehaviour, ISetShotAudio
     private void Update()
     {
         _currentBullets = _currentGun.GetCurrentBullets();
+        bool _isStickMoving = _joystick.Vertical > 0 || _joystick.Vertical < 0 || _joystick.Horizontal > 0 ||
+                              _joystick.Horizontal < 0;
         if (_currentBullets > 0)
         {
-            if (Input.GetMouseButtonDown(0))
+            if (_isStickMoving)
             {
-                GameObject newBullet = Instantiate(BulletPrefab,SpawnBullet.position, SpawnBullet.rotation);//bullet creation
-                newBullet.GetComponent<Rigidbody>().velocity = transform.forward * BulletSpeed;//bullet velocity
-                _quantityOfBullets--; //lost bullet
-                //light bullet
-                LightAim.SetActive(true);
-                Invoke(nameof(SetOffLight),0.07f);
-                //Shot Audio
-                SetShotAudio(Shot);
+                _time += Time.deltaTime;
+                if (_time > 0.3f)
+                {
+                    Shoot();
+                    _time = 0;
+                }
             }
         }
-        else if (Input.GetMouseButtonDown(0))
+        else if (_isStickMoving)
         {
-            NotShot.Play();
+            _time += Time.deltaTime;
+            if (_time > 0.5f)
+            {
+                NotShot.Play();
+                _time = 0;
+            }
         }
     }
 
+    private void Shoot()
+    {
+        GameObject newBullet = Instantiate(BulletPrefab,SpawnBullet.position, SpawnBullet.rotation);//bullet creation
+        newBullet.GetComponent<Rigidbody>().velocity = transform.forward * BulletSpeed;//bullet velocity
+        _quantityOfBullets--; //lost bullet
+        //light bullet
+        LightAim.SetActive(true);
+        Invoke(nameof(SetOffLight),0.07f);
+        //Shot Audio
+        SetShotAudio(Shot);
+    }
+    
     private void SetOffLight() => LightAim.SetActive(false);
 
     public void SetShotAudio(AudioSource shotAudio)

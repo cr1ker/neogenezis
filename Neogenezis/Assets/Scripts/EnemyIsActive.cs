@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class EnemyIsActive : MonoBehaviour
 {
-    [SerializeField] private List<GameObject> _enemies;
+    [SerializeField] protected List<GameObject> _enemies;
     [SerializeField] private Transform _playerTransform;
     [SerializeField] private byte _minimalDistanceForEnemyActive;
 

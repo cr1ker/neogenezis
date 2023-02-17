@@ -12,7 +12,7 @@ public class EnemyRotationToPlayer : MonoBehaviour
     
     private void Start()
     {
-        _playerTransform = FindObjectOfType<PlayerMoving>().transform;
+        _playerTransform = FindObjectOfType<PlayerHealth>().transform;
     }
 
     private void Update()

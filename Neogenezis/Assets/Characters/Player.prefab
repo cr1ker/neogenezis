@@ -639,10 +639,10 @@ GameObject:
   m_Component:
   - component: {fileID: 543788372451439860}
   - component: {fileID: 543788372451439861}
-  - component: {fileID: 543788372451439859}
   - component: {fileID: 543788372451439858}
   - component: {fileID: 543788372451439857}
   - component: {fileID: 543788372451439856}
+  - component: {fileID: 5435906213803146937}
   m_Layer: 0
   m_Name: Player
   m_TagString: Untagged
@@ -687,24 +687,6 @@ Rigidbody:
   m_Interpolate: 1
   m_Constraints: 120
   m_CollisionDetection: 0
---- !u!114 &543788372451439859
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 543788372451439862}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: cb0a4acdeef15b740a2765cddcbe77dd, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  PlayerSpeed: 1.5
-  PlayerRigidbody: {fileID: 543788372451439861}
-  JumpSpeed: 14
-  Friction: 0.2
-  PlayerScale: {fileID: 543788372451439860}
-  SitDownSpeed: 5
 --- !u!75 &543788372451439858
 ConstantForce:
   m_ObjectHideFlags: 0
@@ -802,6 +784,22 @@ MonoBehaviour:
   - {fileID: 0}
   _playerTransform: {fileID: 543788372451439860}
   _minimalDistanceForEnemyActive: 35
+--- !u!114 &5435906213803146937
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 543788372451439862}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 49f0f70e2213481488e0b24e1df0e79a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  _playerSpeed: 0
+  _jumpSpeed: 0
+  _friction: 0
+  _joystick: {fileID: 0}
 --- !u!1 &543788372705942015
 GameObject:
   m_ObjectHideFlags: 0
