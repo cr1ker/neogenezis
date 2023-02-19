@@ -5,34 +5,43 @@ using UnityEngine;
 
 public class Gun : MonoBehaviour
 {
-    public int GunDamage;
-    public int SizeOfMagazine;
+    [SerializeField] private int _gunDamage;
+    [SerializeField] private int _sizeOfMagazine;
+    [SerializeField] private float _reloadTime;
+    [SerializeField] protected float _shootTime;
+    [SerializeField] private AudioSource _reloadSound;
     private BulletCreator _bulletCreator; // reference to totalBullets
     private int _currentBullets;
+    private int _reloadedBullets;
     private int _reserveBullets;
     private int _totalBullets;
-    public TextMeshProUGUI BulletsText;
+    [SerializeField] private TextMeshProUGUI _bulletsText;
+    private bool _isReloading;
+
+    private void OnEnable()
+    {
+        FindObjectOfType<BulletCreator>().RefreshGunInformation(ref _shootTime);
+    }
     
     private void Start()
     {
         _bulletCreator = FindObjectOfType<BulletCreator>();
-        _totalBullets = _bulletCreator.GetTotalNumberOfBullets(); //get all bullets 50
-        _reserveBullets = _totalBullets - SizeOfMagazine; // calculate reserve bullets 35
+        _totalBullets = _bulletCreator.GetTotalNumberOfBullets(); //get all bullets 
+        _reserveBullets = _totalBullets - _sizeOfMagazine; // calculate reserve bullets 
     }
 
     private void Update()
     {
-        _totalBullets = _bulletCreator.GetTotalNumberOfBullets(); //get all bullets
-        _currentBullets = _totalBullets - _reserveBullets; // calculate reserve bullets
-        BulletsText.text = _currentBullets.ToString() + " / " + _reserveBullets.ToString();
-        //Debug.Log(_quantityOfBullets);
-        if (Input.GetKeyDown(KeyCode.R)) //reload
+        if (_isReloading == false)
         {
-            while (_currentBullets != SizeOfMagazine && _reserveBullets != 0)
-            {
-                _reserveBullets--;
-                _currentBullets++;
-            }
+            _totalBullets = _bulletCreator.GetTotalNumberOfBullets(); //get all bullets
+            _currentBullets = _totalBullets - _reserveBullets; // calculate reserve bullets
+            _bulletsText.text = _currentBullets.ToString() + " / " + _reserveBullets.ToString();
+        }
+        if (Input.GetKeyDown(KeyCode.R) || _currentBullets == 0) //reload
+        {
+            _reloadSound.Play();
+            StartCoroutine(nameof(Reload));
         }
     }
 
@@ -48,6 +57,20 @@ public class Gun : MonoBehaviour
 
     public int GetGunDamage()
     {
-        return GunDamage;
+        return _gunDamage;
+    }
+
+    private IEnumerator Reload()
+    {
+        _isReloading = true;
+        while (_reloadedBullets != _sizeOfMagazine && _reserveBullets != 0)
+        {
+            _reserveBullets--;
+            _reloadedBullets++;
+        }
+        yield return new WaitForSeconds(_reloadTime);
+        _currentBullets += _reloadedBullets;
+        _reloadedBullets = 0;
+        _isReloading = false;
     }
 }

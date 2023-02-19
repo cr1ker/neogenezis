@@ -6,20 +6,19 @@ using UnityEngine;
 public class Aim : MonoBehaviour
 {
     [SerializeField] private Transform Crosshair;
-    [SerializeField] private Camera PlayerCamera;
     [SerializeField] private Transform Body;
-    [SerializeField] private Transform _defaultAimPosition;
-    [SerializeField] private float _rotationCrosshairSpeed;
-    
+
     [SerializeField] private Quaternion LeftQuaternion;
     [SerializeField] private Quaternion RightQuaternion;
     private const float SpeedRotation = 5;
     [SerializeField] private Transform _gun;
     [SerializeField] protected Joystick _joystick;
-    [SerializeField] private float _offset;
+    private float _offset;
 
     private void Start()
     {
+        _offset = 0;
+        DirectGunTo();
     }
     
     /*private void LateUpdate()
@@ -43,15 +42,30 @@ public class Aim : MonoBehaviour
 
     private void LateUpdate()
     {
-        float rotateX = Mathf.Atan2(_joystick.Horizontal, _joystick.Vertical) * Mathf.Rad2Deg;
-        transform.localRotation = Quaternion.Euler(rotateX + _offset,0f,0f);
-        Vector3 toAim = Crosshair.position - transform.position;
-        _gun.rotation = Quaternion.LookRotation(toAim);
-        
+        if (IsJoysticActive())
+        {
+            _offset = -90;
+            DirectGunTo();
+        }
         Vector3 toBody = Crosshair.position - Body.position;
         RotatePlayer(toBody);
     }
 
+    private void DirectGunTo()
+    {
+        float rotateX = Mathf.Atan2(_joystick.Horizontal, _joystick.Vertical) * Mathf.Rad2Deg;
+        transform.localRotation = Quaternion.Euler(rotateX + _offset,0f,0f);
+        Vector3 toAim = Crosshair.position - transform.position;
+        _gun.rotation = Quaternion.LookRotation(toAim);
+    }
+
+    private bool IsJoysticActive()
+    {
+        bool _isStickMoving = _joystick.Vertical > 0 || _joystick.Vertical < 0 || _joystick.Horizontal > 0 ||
+                              _joystick.Horizontal < 0;
+        return _isStickMoving;
+    }
+    
     private void RotatePlayer(Vector3 body)
     {
         Body.rotation = body.x < 0 ?

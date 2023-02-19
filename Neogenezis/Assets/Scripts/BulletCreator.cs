@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.UIElements;
 
 public class BulletCreator : MonoBehaviour, ISetShotAudio
 {
@@ -19,6 +20,7 @@ public class BulletCreator : MonoBehaviour, ISetShotAudio
 
     private int _currentBullets; //reference to Gun
     private int _quantityOfBullets;
+    private float _shootTime;
     private Gun _currentGun;
 
     private void Awake()
@@ -30,24 +32,22 @@ public class BulletCreator : MonoBehaviour, ISetShotAudio
     private void Update()
     {
         _currentBullets = _currentGun.GetCurrentBullets();
-        bool _isStickMoving = _joystick.Vertical > 0 || _joystick.Vertical < 0 || _joystick.Horizontal > 0 ||
-                              _joystick.Horizontal < 0;
         if (_currentBullets > 0)
         {
-            if (_isStickMoving)
+            if (IsJoystickActive())
             {
                 _time += Time.deltaTime;
-                if (_time > 0.3f)
+                if (_time > _shootTime)
                 {
                     Shoot();
                     _time = 0;
                 }
             }
         }
-        else if (_isStickMoving)
+        else if (IsJoystickActive() && _quantityOfBullets == 0)
         {
             _time += Time.deltaTime;
-            if (_time > 0.5f)
+            if (_time > _shootTime)
             {
                 NotShot.Play();
                 _time = 0;
@@ -86,5 +86,17 @@ public class BulletCreator : MonoBehaviour, ISetShotAudio
     public int GetTotalNumberOfBullets()
     {
         return _quantityOfBullets;
+    }
+    
+    private bool IsJoystickActive()
+    {
+        bool IsStickMoving = _joystick.Vertical > 0 || _joystick.Vertical < 0 || _joystick.Horizontal > 0 ||
+                              _joystick.Horizontal < 0;
+        return IsStickMoving;
+    }
+
+    public void RefreshGunInformation(ref float shootTime)
+    {
+        _shootTime = shootTime;
     }
 }
