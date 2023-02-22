@@ -37,4 +37,9 @@ public class EnemyIsActive : MonoBehaviour
             }
         }
     }
+
+    public List<GameObject> GetEnemies()
+    {
+        return _enemies;
+    }
 }

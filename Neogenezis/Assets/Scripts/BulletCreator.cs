@@ -22,6 +22,7 @@ public class BulletCreator : MonoBehaviour, ISetShotAudio
     private int _quantityOfBullets;
     private float _shootTime;
     private Gun _currentGun;
+    private bool _isShootActive;
 
     private void Awake()
     {
@@ -32,9 +33,9 @@ public class BulletCreator : MonoBehaviour, ISetShotAudio
     private void Update()
     {
         _currentBullets = _currentGun.GetCurrentBullets();
-        if (_currentBullets > 0)
+        if (_isShootActive)
         {
-            if (IsJoystickActive())
+            if (_currentBullets > 0)
             {
                 _time += Time.deltaTime;
                 if (_time > _shootTime)
@@ -43,17 +44,21 @@ public class BulletCreator : MonoBehaviour, ISetShotAudio
                     _time = 0;
                 }
             }
-        }
-        else if (IsJoystickActive() && _quantityOfBullets == 0)
-        {
-            _time += Time.deltaTime;
-            if (_time > _shootTime)
+            else if (_quantityOfBullets == 0)
             {
-                NotShot.Play();
-                _time = 0;
+                _time += Time.deltaTime;
+                if (_time > _shootTime)
+                {
+                    NotShot.Play();
+                    _time = 0;
+                }
             }
         }
     }
+
+    public void OnShootButtonEnter() => _isShootActive = true;
+
+    public void OnShootButtonExit() => _isShootActive = false;
 
     private void Shoot()
     {

@@ -12,13 +12,15 @@ public class Aim : MonoBehaviour
     [SerializeField] private Quaternion RightQuaternion;
     private const float SpeedRotation = 5;
     [SerializeField] private Transform _gun;
-    [SerializeField] protected Joystick _joystick;
-    private float _offset;
+    [SerializeField] private List<GameObject> _enemies;
+    [SerializeField] private float _distanceForShoot;
+    private GameObject _currentEnemy;
+    private float _closestEnemyDistance;
 
     private void Start()
     {
-        _offset = 0;
         DirectGunTo();
+        _enemies = FindObjectOfType<EnemyIsActive>().GetEnemies();
     }
     
     /*private void LateUpdate()
@@ -42,30 +44,38 @@ public class Aim : MonoBehaviour
 
     private void LateUpdate()
     {
-        if (IsJoysticActive())
-        {
-            _offset = -90;
-            DirectGunTo();
-        }
+        DirectGunTo();
         Vector3 toBody = Crosshair.position - Body.position;
         RotatePlayer(toBody);
     }
 
     private void DirectGunTo()
     {
-        float rotateX = Mathf.Atan2(_joystick.Horizontal, _joystick.Vertical) * Mathf.Rad2Deg;
-        transform.localRotation = Quaternion.Euler(rotateX + _offset,0f,0f);
-        Vector3 toAim = Crosshair.position - transform.position;
-        _gun.rotation = Quaternion.LookRotation(toAim);
+        _closestEnemyDistance = _distanceForShoot;
+        foreach (var enemy in _enemies)
+        {
+            if (enemy != null)
+            {
+                float distance = Vector3.Distance(enemy.transform.position, Body.position);
+                if (distance <= _closestEnemyDistance)
+                {
+                    _closestEnemyDistance = distance;
+                    _currentEnemy = enemy;
+                }
+            }
+        }
+        if (_currentEnemy != null)
+        {
+            Crosshair.position = _currentEnemy.transform.position;
+            Vector3 toAim = Crosshair.position - transform.position;
+            if (toAim != Vector3.zero)
+            {
+                transform.rotation = Quaternion.LookRotation(toAim);
+                _gun.rotation = Quaternion.LookRotation(toAim);
+            }
+        }
     }
 
-    private bool IsJoysticActive()
-    {
-        bool _isStickMoving = _joystick.Vertical > 0 || _joystick.Vertical < 0 || _joystick.Horizontal > 0 ||
-                              _joystick.Horizontal < 0;
-        return _isStickMoving;
-    }
-    
     private void RotatePlayer(Vector3 body)
     {
         Body.rotation = body.x < 0 ?

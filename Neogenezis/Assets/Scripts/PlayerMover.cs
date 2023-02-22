@@ -9,22 +9,23 @@ public class PlayerMover : MonoBehaviour
     [SerializeField] private float _jumpSpeed;
     [SerializeField] private float _friction;
     [SerializeField] private Joystick _joystick;
-    
+
     private bool _grounded;
     private Rigidbody _playerRigidbody;
+    float AirSpeed;
 
     private void Awake()
     {
         _playerRigidbody = gameObject.GetComponent<Rigidbody>();
     }
     
-    private void Update()
+    /*private void Update()
     {
         if (Input.GetKeyDown(KeyCode.Space) && _grounded is true)
         {
             _playerRigidbody.AddForce(0,_jumpSpeed,0, ForceMode.VelocityChange);
         }
-    }
+    }*/
 
     public void OnCollisionExit(Collision collision)
     {
@@ -42,12 +43,20 @@ public class PlayerMover : MonoBehaviour
 
     private void FixedUpdate()
     {
-        float AirSpeed = 1;
+        AirSpeed = 1;
         if (_grounded is false)
         {
             AirSpeed = 0.1f; //while you fly, you dont have any additional force
         }
         _playerRigidbody.AddForce(_joystick.Horizontal * _playerSpeed * AirSpeed,0,0, ForceMode.VelocityChange);
         _playerRigidbody.AddForce(-_playerRigidbody.velocity.x * _friction * AirSpeed,0, 0, ForceMode.VelocityChange);
+    }
+
+    public void Jump()
+    {
+        if (_grounded is true)
+        {
+            _playerRigidbody.velocity = new Vector3(_playerRigidbody.velocity.x,_jumpSpeed, 0f);
+        }
     }
 }
