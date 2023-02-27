@@ -11,7 +11,6 @@ GameObject:
   - component: {fileID: 2534596114975984269}
   - component: {fileID: 1478141829654611240}
   - component: {fileID: 3704102256160109026}
-  - component: {fileID: 7215677741856691585}
   m_Layer: 0
   m_Name: elongated tree
   m_TagString: Untagged
@@ -84,16 +83,3 @@ MeshRenderer:
   m_SortingLayer: 0
   m_SortingOrder: 0
   m_AdditionalVertexStreams: {fileID: 0}
---- !u!65 &7215677741856691585
-BoxCollider:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2911402406548525111}
-  m_Material: {fileID: 0}
-  m_IsTrigger: 0
-  m_Enabled: 1
-  serializedVersion: 2
-  m_Size: {x: 1.6764234, y: 4.7191834, z: 1.5954106}
-  m_Center: {x: -0.0000029802322, y: 2.3595917, z: 0.0000005066395}

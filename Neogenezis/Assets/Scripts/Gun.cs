@@ -28,6 +28,7 @@ public class Gun : MonoBehaviour
         _bulletCreator = FindObjectOfType<BulletCreator>();
         _totalBullets = _bulletCreator.GetTotalNumberOfBullets(); //get all bullets 
         _reserveBullets = _totalBullets - _sizeOfMagazine; // calculate reserve bullets 
+        _reloadedBullets = 0;
     }
 
     private void Update()
@@ -38,7 +39,7 @@ public class Gun : MonoBehaviour
             _currentBullets = _totalBullets - _reserveBullets; // calculate reserve bullets
             _bulletsText.text = _currentBullets.ToString() + " / " + _reserveBullets.ToString();
         }
-        if (Input.GetKeyDown(KeyCode.R) || _currentBullets == 0) //reload
+        if (_currentBullets == 0 && _isReloading != true && _reserveBullets != 0) //reload
         {
             _reloadSound.Play();
             StartCoroutine(nameof(Reload));
@@ -60,9 +61,20 @@ public class Gun : MonoBehaviour
         return _gunDamage;
     }
 
+    public void OnReloadButton()
+    {
+        if (_currentBullets < _sizeOfMagazine && _isReloading is false && _reserveBullets != 0)
+        {
+            _reloadSound.Play();
+            StartCoroutine(nameof(Reload));
+        }
+    }
+
     private IEnumerator Reload()
     {
         _isReloading = true;
+        _reloadedBullets = _currentBullets;
+        _currentBullets = 0;
         while (_reloadedBullets != _sizeOfMagazine && _reserveBullets != 0)
         {
             _reserveBullets--;
