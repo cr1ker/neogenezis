@@ -4,10 +4,10 @@ using UnityEngine;
 
 public class LiftBox : BaseMovingObjects
 {
-    public float HeightOfMovingLift;
+    [SerializeField] private float _heightOfMovingLift;
 
     private void Update()
     {
-        MoveObject(HeightOfMovingLift);
+        MoveObject(_heightOfMovingLift);
     }
 }

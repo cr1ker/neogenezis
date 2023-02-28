@@ -1,0 +1,64 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!687078895 &4343727234628468602
+SpriteAtlas:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: UI
+  m_EditorData:
+    serializedVersion: 2
+    textureSettings:
+      serializedVersion: 2
+      anisoLevel: 1
+      compressionQuality: 50
+      maxTextureSize: 2048
+      textureCompression: 0
+      filterMode: 1
+      generateMipMaps: 0
+      readable: 0
+      crunchedCompression: 0
+      sRGB: 1
+    platformSettings: []
+    packingSettings:
+      serializedVersion: 2
+      padding: 8
+      blockOffset: 1
+      allowAlphaSplitting: 0
+      enableRotation: 0
+      enableTightPacking: 0
+      enableAlphaDilation: 0
+    secondaryTextureSettings: {}
+    variantMultiplier: 1
+    packables:
+    - {fileID: 2800000, guid: 51acf8cf325770c419aa398bd336a12c, type: 3}
+    - {fileID: 2800000, guid: 61a6b18b96203234288c782b28bd7d1e, type: 3}
+    - {fileID: 2800000, guid: c30ba73c6a4a98d478443cd8480f8a7d, type: 3}
+    - {fileID: 2800000, guid: ea0eb9a4f13cdbe489cdb43cc6fd822d, type: 3}
+    - {fileID: 2800000, guid: 9352395dade3d12419f480cc689bdb6a, type: 3}
+    - {fileID: 2800000, guid: c35fbb13695752448a4b5a96f5e685be, type: 3}
+    - {fileID: 2800000, guid: 5ff665b211a4560409b894a0f3277a16, type: 3}
+    bindAsDefault: 1
+    isAtlasV2: 0
+    cachedData: {fileID: 0}
+  m_MasterAtlas: {fileID: 0}
+  m_PackedSprites:
+  - {fileID: 21300000, guid: 5ff665b211a4560409b894a0f3277a16, type: 3}
+  - {fileID: 21300000, guid: c35fbb13695752448a4b5a96f5e685be, type: 3}
+  - {fileID: 21300000, guid: ea0eb9a4f13cdbe489cdb43cc6fd822d, type: 3}
+  - {fileID: 21300000, guid: 61a6b18b96203234288c782b28bd7d1e, type: 3}
+  - {fileID: 21300000, guid: c30ba73c6a4a98d478443cd8480f8a7d, type: 3}
+  - {fileID: 21300000, guid: 9352395dade3d12419f480cc689bdb6a, type: 3}
+  - {fileID: 21300000, guid: 51acf8cf325770c419aa398bd336a12c, type: 3}
+  m_PackedSpriteNamesToIndex:
+  - HealthBar 3
+  - HP
+  - HealthBar 2
+  - 599416
+  - 4406278
+  - HealthBar 1
+  - HealthBar
+  m_RenderDataMap: {}
+  m_Tag: UI
+  m_IsVariant: 0

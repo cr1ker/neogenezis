@@ -7,19 +7,22 @@ public class Aim : MonoBehaviour
 {
     [SerializeField] private Transform Crosshair;
     [SerializeField] private Transform Body;
-
-    [SerializeField] private Quaternion LeftQuaternion;
-    [SerializeField] private Quaternion RightQuaternion;
+    [SerializeField] private Joystick _joystick;
+    [SerializeField] private Quaternion _leftQuaternion;
+    [SerializeField] private Quaternion _rightQuaternion;
     private const float SpeedRotation = 5;
     [SerializeField] private Transform _gun;
     [SerializeField] private List<GameObject> _enemies;
     [SerializeField] private float _distanceForShoot;
     private GameObject _currentEnemy;
+    private bool _isGunDirect;
     private float _closestEnemyDistance;
+    private const short LeftDirectCrosshairPosition = -5;
+    private const short RightDirectCrosshairPosition = 5;
+    private Vector3 _defaultCrosshairPosition;
 
     private void Start()
     {
-        DirectGunTo();
         _enemies = FindObjectOfType<EnemyIsActive>().GetEnemies();
     }
     
@@ -45,8 +48,15 @@ public class Aim : MonoBehaviour
     private void LateUpdate()
     {
         DirectGunTo();
-        Vector3 toBody = Crosshair.position - Body.position;
-        RotatePlayer(toBody);
+        if (_isGunDirect)
+        {
+            Vector3 toBody = Crosshair.position - Body.position;
+            RotatePlayer(toBody);
+        }
+        else
+        {
+            RotatePlayer(_joystick.Horizontal);
+        }
     }
 
     private void DirectGunTo()
@@ -68,20 +78,52 @@ public class Aim : MonoBehaviour
         {
             Crosshair.position = _currentEnemy.transform.position;
             Vector3 toAim = Crosshair.position - transform.position;
-            if (toAim != Vector3.zero)
-            {
-                transform.rotation = Quaternion.LookRotation(toAim);
-                _gun.rotation = Quaternion.LookRotation(toAim);
-            }
+            RotateGunTo(toAim);
+            _isGunDirect = true;
+        }
+        else
+        {
+            _isGunDirect = false;
+        }
+    }
+
+    private void RotateGunTo(Vector3 toPosition)
+    {
+        if (toPosition != Vector3.zero)
+        {
+            transform.rotation = Quaternion.LookRotation(toPosition);
+            _gun.rotation = Quaternion.LookRotation(toPosition);
         }
     }
 
     private void RotatePlayer(Vector3 body)
     {
         Body.rotation = body.x < 0 ?
-            Quaternion.Lerp(Body.rotation,LeftQuaternion,Time.deltaTime * SpeedRotation) 
+            Quaternion.Lerp(Body.rotation,_leftQuaternion,Time.deltaTime * SpeedRotation) 
             : 
-            Quaternion.Lerp(Body.rotation,RightQuaternion,Time.deltaTime * SpeedRotation);
+            Quaternion.Lerp(Body.rotation,_rightQuaternion,Time.deltaTime * SpeedRotation);
+    }
+    
+    private void RotatePlayer(float joystickPosition)
+    {
+        if (joystickPosition < 0)
+        {
+            Body.rotation = Quaternion.Lerp(Body.rotation, _leftQuaternion, Time.deltaTime * SpeedRotation);
+            _defaultCrosshairPosition = new Vector3(Body.position.x + LeftDirectCrosshairPosition, Body.position.y, 0f);
+            Crosshair.position = _defaultCrosshairPosition;
+        }
+        else if(joystickPosition > 0)
+        {
+            Body.rotation = Quaternion.Lerp(Body.rotation,_rightQuaternion,Time.deltaTime * SpeedRotation);
+            _defaultCrosshairPosition = new Vector3(Body.position.x + RightDirectCrosshairPosition, Body.position.y, 0f);
+            Crosshair.position = _defaultCrosshairPosition;
+        }
+        else
+        {
+            Crosshair.position = _defaultCrosshairPosition;
+        }
+        Vector3 toAim = Crosshair.position - transform.position;
+        RotateGunTo(toAim);
     }
 }
   

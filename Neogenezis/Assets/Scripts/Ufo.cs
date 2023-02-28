@@ -1,12 +1,13 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class UFO : MonoBehaviour, IUFOContoller
 {
-    [SerializeField]private Animator RayAnimator;
+    [SerializeField] private Animator RayAnimator;
     [SerializeField] private MeshRenderer _player;
-
+    
     private void Start()
     {
         SpawnAction();
