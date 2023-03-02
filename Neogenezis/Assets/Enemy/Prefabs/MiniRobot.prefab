@@ -800,8 +800,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8cfbcb1e0c2517d4e957c1790eef248d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  LeftEuler: {x: 0, y: 0, z: 0}
-  RightEuler: {x: 0, y: -180, z: 0}
+  _leftEuler: {x: 0, y: 0, z: 0}
+  _rightEuler: {x: 0, y: -180, z: 0}
 --- !u!114 &1905226502
 MonoBehaviour:
   m_ObjectHideFlags: 0

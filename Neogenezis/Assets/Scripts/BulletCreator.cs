@@ -15,7 +15,6 @@ public class BulletCreator : MonoBehaviour, ISetShotAudio
     [SerializeField] private AudioSource Shot;
     [SerializeField] private AudioSource NotShot; //active while _currentbullets == 0
     [SerializeField] private AudioSource BulletPick;
-    [SerializeField] private Joystick _joystick;
     private float _time;
 
     private int _currentBullets; //reference to Gun
@@ -23,34 +22,38 @@ public class BulletCreator : MonoBehaviour, ISetShotAudio
     private float _shootTime;
     private Gun _currentGun;
     private bool _isShootActive;
+    private bool _isGunActive;
 
     private void Awake()
     {
         _quantityOfBullets = 50;
-        _currentGun = FindObjectOfType<Gun>();
+        _isGunActive = false;
     }
 
     private void Update()
     {
-        _currentBullets = _currentGun.GetCurrentBullets();
-        if (_isShootActive)
+        if (_isGunActive)
         {
-            if (_currentBullets > 0)
+            _currentBullets = _currentGun.GetCurrentBullets();
+            if (_isShootActive)
             {
-                _time += Time.deltaTime;
-                if (_time > _shootTime)
+                if (_currentBullets > 0)
                 {
-                    Shoot();
-                    _time = 0;
+                    _time += Time.deltaTime;
+                    if (_time > _shootTime)
+                    {
+                        Shoot();
+                        _time = 0;
+                    }
                 }
-            }
-            else if (_quantityOfBullets == 0)
-            {
-                _time += Time.deltaTime;
-                if (_time > _shootTime)
+                else if (_quantityOfBullets == 0)
                 {
-                    NotShot.Play();
-                    _time = 0;
+                    _time += Time.deltaTime;
+                    if (_time > _shootTime)
+                    {
+                        NotShot.Play();
+                        _time = 0;
+                    }
                 }
             }
         }
@@ -92,14 +95,13 @@ public class BulletCreator : MonoBehaviour, ISetShotAudio
     {
         return _quantityOfBullets;
     }
-    
-    private bool IsJoystickActive()
-    {
-        bool IsStickMoving = _joystick.Vertical > 0 || _joystick.Vertical < 0 || _joystick.Horizontal > 0 ||
-                              _joystick.Horizontal < 0;
-        return IsStickMoving;
-    }
 
+    public void GetCurrentGun()
+    {
+        _currentGun = FindObjectOfType<Gun>();
+        _isGunActive = true;
+    }
+    
     public void RefreshGunInformation(ref float shootTime)
     {
         _shootTime = shootTime;
