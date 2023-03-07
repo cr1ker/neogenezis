@@ -4,7 +4,7 @@ using UnityEngine;
 
 public class Blink : MonoBehaviour
 {
-    public List<Renderer> PlayerMaterial;
+    [SerializeField] private List<Renderer> PlayerMaterial;
     
     public void StartShowBlink()
     {

@@ -1,6 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
-using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.UIElements;
 
@@ -34,6 +31,6 @@ public class CurrentGun : MonoBehaviour
                 break;
         }
         FindObjectOfType<BulletCreator>().GetCurrentGun();
-        Destroy(_blockShootButton);
+        _blockShootButton.SetActive(false);
     }
 }

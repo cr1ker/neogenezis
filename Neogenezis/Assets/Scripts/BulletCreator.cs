@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
+using UnityEngine.Events;
 using UnityEngine.UIElements;
 
 public class BulletCreator : MonoBehaviour, ISetShotAudio
@@ -15,6 +16,7 @@ public class BulletCreator : MonoBehaviour, ISetShotAudio
     [SerializeField] private AudioSource Shot;
     [SerializeField] private AudioSource NotShot; //active while _currentbullets == 0
     [SerializeField] private AudioSource BulletPick;
+    [SerializeField] private UnityEvent _eventOnTakeBulletPack;
     private float _time;
 
     private int _currentBullets; //reference to Gun
@@ -87,6 +89,7 @@ public class BulletCreator : MonoBehaviour, ISetShotAudio
     {
         _quantityOfBullets += 50; //bullet pack
         FindObjectOfType<Gun>().GetNewReserveBullets(ref _quantityOfBullets);
+        _eventOnTakeBulletPack.Invoke();
         BulletPick.pitch = Random.Range(1f, 1.25f);
         BulletPick.Play();
     }

@@ -8,29 +8,17 @@ using Image = UnityEngine.UIElements.Image;
 
 public class UFO : MonoBehaviour, IUFOContoller
 {
-    [SerializeField] private Animator RayAnimator;
-    [SerializeField] private MeshRenderer _player;
-    [SerializeField] private Joystick _joystick;
-    [SerializeField] private GameObject _blockMoveButton; //in start scene, player cannot move, its just for visual
-    [SerializeField] private GameObject _blockJumpButton;
-    
-    [SerializeField] private UnityEvent _eventOnStartUfoAction;
-    [SerializeField] private UnityEvent _eventOnFinishUfoAction;
-    
+    [SerializeField] protected Animator UfoAnimator;
+    [SerializeField] protected MeshRenderer _player;
+    [SerializeField] protected Joystick _joystick;
+    [SerializeField] protected GameObject _blockMoveButton; //in start scene, player cannot move, its just for visual
+    [SerializeField] protected GameObject _blockJumpButton;
+
     private void Start()
     {
         _joystick.enabled = false;
-        _eventOnStartUfoAction.Invoke();
     }
 
-    private void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.A))
-        {
-            _eventOnFinishUfoAction.Invoke();
-        }
-    }
-    
     public void SpawnAction()
     {
         SetAnimationBool(true);
@@ -42,7 +30,6 @@ public class UFO : MonoBehaviour, IUFOContoller
     {
         SetAnimationBool(true);
         StartCoroutine(SetPlayerInactive());
-        SetAnimationBool(false);
     }
 
     private IEnumerator SetPlayerActive()
@@ -50,22 +37,20 @@ public class UFO : MonoBehaviour, IUFOContoller
         yield return new WaitForSeconds(3);
         _player.enabled = true;
         yield return new WaitForSeconds(2);
-        SetMovingButtonsBool(false);
+        SetButtonsBool(false);
         _joystick.enabled = true;
     }
 
     private IEnumerator SetPlayerInactive()
     {
-        yield return new WaitForSeconds(3);
-        _player.enabled = false;
-        yield return new WaitForSeconds(2);
-        SetMovingButtonsBool(true);
+        SetButtonsBool(true);
         _joystick.enabled = false;
+        yield return new WaitForSeconds(2);
+        _player.enabled = false;
     }
 
-    private void SetAnimationBool(bool isActive) => RayAnimator.SetBool("RayActive", isActive);
-
-    private void SetMovingButtonsBool(bool isActive)
+    private void SetAnimationBool(bool isActive) => UfoAnimator.SetBool("RayActive", isActive);
+    private void SetButtonsBool(bool isActive)
     {
         _blockJumpButton.SetActive(isActive);
         _blockMoveButton.SetActive(isActive);
