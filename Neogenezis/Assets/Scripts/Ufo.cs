@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting;
 using UnityEngine;
 using UnityEngine.Events;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 using Image = UnityEngine.UIElements.Image;
 
@@ -30,6 +31,7 @@ public class UFO : MonoBehaviour, IUFOContoller
     {
         SetAnimationBool(true);
         StartCoroutine(SetPlayerInactive());
+        
     }
 
     private IEnumerator SetPlayerActive()
@@ -47,8 +49,20 @@ public class UFO : MonoBehaviour, IUFOContoller
         _joystick.enabled = false;
         yield return new WaitForSeconds(2);
         _player.enabled = false;
+        yield return new WaitForSeconds(5);
+        PassLevel();
     }
 
+    private void PassLevel()
+    {
+        int currentLevel = SceneManager.GetActiveScene().buildIndex;
+
+        if (currentLevel >= PlayerPrefs.GetInt("UnlockedLevels"))
+        {
+            PlayerPrefs.SetInt("UnlockedLevels", currentLevel + 1);
+        }
+    }
+    
     private void SetAnimationBool(bool isActive) => UfoAnimator.SetBool("RayActive", isActive);
     private void SetButtonsBool(bool isActive)
     {
