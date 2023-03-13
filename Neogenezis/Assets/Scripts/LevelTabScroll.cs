@@ -34,7 +34,7 @@ public class LevelTabScroll : MonoBehaviour
             Vector3 levelImageScale = _levelsImages[i].transform.localScale;
             if (i == _currentLevelImage)
             {
-                _levelsImages[_currentLevelImage].transform.localScale = Vector3.Lerp(currentLevelImageScale, Vector3.one * 1.25f, Time.deltaTime * 15);
+                _levelsImages[_currentLevelImage].transform.localScale = Vector3.Lerp(currentLevelImageScale, Vector3.one * 1.4f, Time.deltaTime * 15);
             }
             else
             {
