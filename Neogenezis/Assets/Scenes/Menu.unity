@@ -4607,7 +4607,7 @@ AudioSource:
   serializedVersion: 4
   OutputAudioMixerGroup: {fileID: 0}
   m_audioClip: {fileID: 8300000, guid: 243afce206ae73743a7f3d1c57e554ab, type: 3}
-  m_PlayOnAwake: 1
+  m_PlayOnAwake: 0
   m_Volume: 1
   m_Pitch: 1
   Loop: 1
@@ -13296,6 +13296,7 @@ GameObject:
   - component: {fileID: 114128870140104228}
   - component: {fileID: 114625977019820006}
   - component: {fileID: 95906098273487652}
+  - component: {fileID: 224422962509763455}
   m_Layer: 5
   m_Name: Switch
   m_TagString: Untagged
@@ -14170,7 +14171,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3882353, g: 0.7764706, b: 1, a: 0.39215687}
+  m_Color: {r: 1, g: 0.43137255, b: 0.39215687, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -14493,7 +14494,7 @@ MonoBehaviour:
   imageObject: {fileID: 114960719790510219}
   keepAlphaValue: 0
   useCustomColor: 0
-  colorType: 0
+  colorType: 3
 --- !u!114 &114114246474815298
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14541,9 +14542,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   switchTag: Terms Of Use
-  isOn: 1
-  saveValue: 0
-  invokeAtStart: 0
+  isOn: 0
+  saveValue: 1
+  invokeAtStart: 1
   OnEvents:
     m_PersistentCalls:
       m_Calls:
@@ -14645,7 +14646,7 @@ MonoBehaviour:
   textObject: {fileID: 114821807210567011}
   keepAlphaValue: 0
   useCustomColor: 0
-  colorType: 0
+  colorType: 3
   fontType: 3
 --- !u!114 &114140207146575888
 MonoBehaviour:
@@ -14716,7 +14717,7 @@ MonoBehaviour:
   imageObject: {fileID: 114704380095184121}
   keepAlphaValue: 0
   useCustomColor: 0
-  colorType: 0
+  colorType: 3
 --- !u!114 &114156045862481528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -14798,7 +14799,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3882353, g: 0.7764706, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.43137255, b: 0.39215687, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15068,7 +15069,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
+  m_Color: {r: 1, g: 0.43137255, b: 0.39215687, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15247,7 +15248,7 @@ MonoBehaviour:
   imageObject: {fileID: 114064912836881211}
   keepAlphaValue: 1
   useCustomColor: 0
-  colorType: 0
+  colorType: 3
 --- !u!114 &114307421720353174
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15436,7 +15437,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3882353, g: 0.7764706, b: 1, a: 0.39215687}
+  m_Color: {r: 1, g: 0.43137255, b: 0.39215687, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -15580,7 +15581,7 @@ MonoBehaviour:
   imageObject: {fileID: 114584287383355043}
   keepAlphaValue: 0
   useCustomColor: 0
-  colorType: 0
+  colorType: 3
 --- !u!114 &114472443289472538
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15682,7 +15683,7 @@ MonoBehaviour:
   imageObject: {fileID: 114196456751622337}
   keepAlphaValue: 0
   useCustomColor: 0
-  colorType: 0
+  colorType: 3
 --- !u!114 &114486801579664840
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -16022,7 +16023,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3882353, g: 0.7764706, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.43137255, b: 0.39215687, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -16172,7 +16173,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.1764706, g: 0.1764706, b: 0.1764706, a: 1}
+  m_Color: {r: 1, g: 0.43137255, b: 0.39215687, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -16365,7 +16366,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3882353, g: 0.7764706, b: 1, a: 0.39215687}
+  m_Color: {r: 1, g: 0.43137255, b: 0.39215687, a: 0.39215687}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -16635,7 +16636,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3882353, g: 0.7764706, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.43137255, b: 0.39215687, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -16755,7 +16756,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3882353, g: 0.7764706, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.43137255, b: 0.39215687, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -16959,7 +16960,7 @@ MonoBehaviour:
   imageObject: {fileID: 114672201756916475}
   keepAlphaValue: 1
   useCustomColor: 0
-  colorType: 0
+  colorType: 3
 --- !u!114 &114813975987769588
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -17201,8 +17202,8 @@ MonoBehaviour:
   m_fontMaterials: []
   m_fontColor32:
     serializedVersion: 2
-    rgba: 4294952547
-  m_fontColor: {r: 0.3882353, g: 0.7764706, b: 1, a: 1}
+    rgba: 4284772095
+  m_fontColor: {r: 1, g: 0.43137255, b: 0.39215687, a: 1}
   m_enableVertexGradient: 0
   m_colorMode: 3
   m_fontColorGradient:
@@ -17938,7 +17939,7 @@ MonoBehaviour:
   imageObject: {fileID: 114214799391966157}
   keepAlphaValue: 0
   useCustomColor: 0
-  colorType: 2
+  colorType: 3
 --- !u!114 &114838812840296792
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18198,7 +18199,7 @@ MonoBehaviour:
   imageObject: {fileID: 114346650506834035}
   keepAlphaValue: 1
   useCustomColor: 0
-  colorType: 0
+  colorType: 3
 --- !u!114 &114942720094224924
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18266,7 +18267,7 @@ MonoBehaviour:
   imageObject: {fileID: 114741694482420221}
   keepAlphaValue: 0
   useCustomColor: 0
-  colorType: 0
+  colorType: 3
 --- !u!114 &114942721731375528
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -18434,7 +18435,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   m_Material: {fileID: 0}
-  m_Color: {r: 0.3882353, g: 0.7764706, b: 1, a: 1}
+  m_Color: {r: 1, g: 0.43137255, b: 0.39215687, a: 1}
   m_RaycastTarget: 1
   m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
   m_Maskable: 1
@@ -18650,7 +18651,7 @@ MonoBehaviour:
   imageObject: {fileID: 114617460769082045}
   keepAlphaValue: 0
   useCustomColor: 0
-  colorType: 2
+  colorType: 3
 --- !u!114 &114990409972428128
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -19830,6 +19831,18 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 110, y: 55}
   m_Pivot: {x: 1, y: 0.5}
+--- !u!114 &224422962509763455
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1846130909164668}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 367fbaf90630b094bb78657eef78d105, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!224 &224445124767944552
 RectTransform:
   m_ObjectHideFlags: 0

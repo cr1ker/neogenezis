@@ -15,9 +15,7 @@ public class LevelPass : MonoBehaviour
         }
     }
 
-    public void OnFinishLevelButtonClick()
-    {
-        PlayerPrefs.Save();
-        SceneManager.LoadScene(0);
-    }
+    public void OnMainMenuButtonClick() => SceneManager.LoadScene(0);
+
+    public void OnNextLevelButtonClick(int indexOfNextLevel) => SceneManager.LoadScene(indexOfNextLevel);
 }
