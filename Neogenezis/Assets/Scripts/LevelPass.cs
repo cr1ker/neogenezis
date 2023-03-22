@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 
@@ -18,4 +16,6 @@ public class LevelPass : MonoBehaviour
     public void OnMainMenuButtonClick() => SceneManager.LoadScene(0);
 
     public void OnNextLevelButtonClick(int indexOfNextLevel) => SceneManager.LoadScene(indexOfNextLevel);
+    
+    public void OnRestartLevelButtonClick() => SceneManager.LoadScene(SceneManager.GetActiveScene().name);
 }

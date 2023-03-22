@@ -1,5 +1,4 @@
 using System.Collections;
-using System.Collections.Generic;
 using DG.Tweening;
 using TMPro;
 using UnityEngine;
@@ -12,6 +11,7 @@ public class LevelMessage : MonoBehaviour
     [SerializeField] private TextMeshProUGUI _text;
     [SerializeField] private Image _blackScreen;
     [SerializeField] private GameObject _finishButtons;
+    [SerializeField] private GameObject _restartButtons;
     private Tween _tween;
     
     private void Start() => StartCoroutine(nameof(SetStartMessage));
@@ -39,6 +39,17 @@ public class LevelMessage : MonoBehaviour
         yield return new WaitForSeconds(3);
         GetComponent<LevelPass>().PassLevel();
         _finishButtons.SetActive(true);
+        _tween.Kill();
+    }
+
+    public IEnumerator SetRestartAction()
+    {
+        _text.text = "Game Over!";
+        _blackScreen.DOFade(1, 2);
+        yield return new WaitForSeconds(2);
+        _tween = _text.DOFade(1, 3);
+        yield return new WaitForSeconds(3);
+        _restartButtons.SetActive(true);
         _tween.Kill();
     }
 }

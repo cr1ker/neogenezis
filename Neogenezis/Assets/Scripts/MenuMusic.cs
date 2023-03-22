@@ -1,23 +1,33 @@
-using System.Collections;
-using System.Collections.Generic;
-using Michsky.UI.Shift;
 using UnityEngine;
 
 public class MenuMusic : MonoBehaviour
 {
-    // Start is called before the first frame update
+    private AudioSource _backgroundMusic;
+    private string _isMusicActive;
+
+    private void Awake() => _backgroundMusic = gameObject.GetComponent<AudioSource>();
+    
     private void Start()
     {
-        bool isMusicOn = FindObjectOfType<SwitchManager>().isOn;
-        if (isMusicOn)
-        {
-            
-        }
+        CheckMusicStatus();
     }
 
-    // Update is called once per frame
-    void Update()
+    public void SetMusicStatus(string status)
     {
-        
+        PlayerPrefs.SetString("isMusicOn", status);
+        CheckMusicStatus();
+    }
+
+    private void CheckMusicStatus()
+    {
+        _isMusicActive = PlayerPrefs.GetString("isMusicOn", "true");
+        if (_isMusicActive == "true")
+        {
+            _backgroundMusic.Play();
+        }
+        else
+        {
+            _backgroundMusic.Stop();
+        }
     }
 }

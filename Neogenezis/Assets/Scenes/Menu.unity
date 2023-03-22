@@ -4589,6 +4589,7 @@ GameObject:
   m_Component:
   - component: {fileID: 883197372}
   - component: {fileID: 883197371}
+  - component: {fileID: 883197373}
   m_Layer: 0
   m_Name: BackgroundMusic
   m_TagString: Untagged
@@ -4707,6 +4708,18 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 6
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &883197373
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 883197370}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 367fbaf90630b094bb78657eef78d105, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &898322792
 GameObject:
   m_ObjectHideFlags: 0
@@ -13296,7 +13309,6 @@ GameObject:
   - component: {fileID: 114128870140104228}
   - component: {fileID: 114625977019820006}
   - component: {fileID: 95906098273487652}
-  - component: {fileID: 224422962509763455}
   m_Layer: 5
   m_Name: Switch
   m_TagString: Untagged
@@ -14544,35 +14556,35 @@ MonoBehaviour:
   switchTag: Terms Of Use
   isOn: 0
   saveValue: 1
-  invokeAtStart: 1
+  invokeAtStart: 0
   OnEvents:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 883197371}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Play
-        m_Mode: 1
+      - m_Target: {fileID: 883197373}
+        m_TargetAssemblyTypeName: MenuMusic, Assembly-CSharp
+        m_MethodName: SetMusicStatus
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: true
           m_BoolArgument: 0
         m_CallState: 2
   OffEvents:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 883197371}
-        m_TargetAssemblyTypeName: UnityEngine.AudioSource, UnityEngine
-        m_MethodName: Stop
-        m_Mode: 1
+      - m_Target: {fileID: 883197373}
+        m_TargetAssemblyTypeName: MenuMusic, Assembly-CSharp
+        m_MethodName: SetMusicStatus
+        m_Mode: 5
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
           m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
           m_IntArgument: 0
           m_FloatArgument: 0
-          m_StringArgument: 
+          m_StringArgument: false
           m_BoolArgument: 0
         m_CallState: 2
   switchAnimator: {fileID: 0}
@@ -19831,18 +19843,6 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 110, y: 55}
   m_Pivot: {x: 1, y: 0.5}
---- !u!114 &224422962509763455
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1846130909164668}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 367fbaf90630b094bb78657eef78d105, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!224 &224445124767944552
 RectTransform:
   m_ObjectHideFlags: 0

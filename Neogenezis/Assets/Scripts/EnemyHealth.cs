@@ -1,15 +1,12 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Events;
-using UnityEngine.UIElements;
 using Slider = UnityEngine.UI.Slider;
 
 public class EnemyHealth : MonoBehaviour, IGunDamage, IEnemyHealthBar
 {
     public int Health;
     public UnityEvent GetDamage;
-    [SerializeField]private Slider _healthBar;
+    [SerializeField] private Slider _healthBar;
 
     private void Start()
     {
@@ -34,7 +31,7 @@ public class EnemyHealth : MonoBehaviour, IGunDamage, IEnemyHealthBar
 
     private void OnTriggerEnter(Collider other)
     {
-        if (other.attachedRigidbody.CompareTag(nameof(Bullet)))
+        if (other.attachedRigidbody?.GetComponent<Bullet>())
         {
             Health -= GunDamage();
             GetDamage.Invoke();
@@ -43,6 +40,10 @@ public class EnemyHealth : MonoBehaviour, IGunDamage, IEnemyHealthBar
             {
                 Destroy(this.gameObject); 
             }
+        }
+        else
+        {
+            Debug.Log("lox");
         }
     }
     
